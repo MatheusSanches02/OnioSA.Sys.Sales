@@ -8,7 +8,7 @@ export default function AppRoutes() {
     <>
       <Router>
         <Routes>
-          <Route path="/home" element={<Home />}>
+          <Route path="/" element={<Home />}>
             <Route path="/home/uploadFiles" element={<Upload />}></Route>
           </Route>
         </Routes>

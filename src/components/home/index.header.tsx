@@ -1,1 +1,1 @@
-//subir git
+export { default as HomeHeader } from "./header";

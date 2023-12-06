@@ -1,1 +1,1 @@
-//subir git
+export { default as UploadFiles } from "./upload";

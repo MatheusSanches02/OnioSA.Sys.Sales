@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { HomeHeader } from "../../components/index.components";
 
 // import { useTranslation } from "react-i18next";
 
@@ -21,8 +22,8 @@ export default function Home() {
         pauseOnHover
         theme="dark"
       />
-      <header className="w-full bg-red-600 h-full"></header>
-      <main>
+      <HomeHeader />
+      <main className="bg-secondary-background w-full h-full">
         <Outlet />
       </main>
     </>
