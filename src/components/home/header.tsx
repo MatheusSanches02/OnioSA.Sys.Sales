@@ -29,7 +29,7 @@ export default function HomeHeader() {
             }`}
             onClick={() => {
               setAbaSelecionada(ID.aba_graficos);
-              navigate("/");
+              navigate("/home/graphics");
             }}
           >
             Gráficos

@@ -1,2 +1,3 @@
-export { HomeHeader } from "./home/index.header";
-export { UploadFiles } from "./upload-files/index.uploda-files";
+export * from "./home/index.header";
+export * from "./upload-files/index.uploda-files";
+export * from "./graphics/index.graphics";
