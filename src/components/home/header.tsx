@@ -4,20 +4,26 @@ import { ID } from "../../global/utils/index.utils";
 
 export default function HomeHeader() {
   const navigate = useNavigate();
-  const [abaSelecionada, setAbaSelecionada] = useState<string>("");
+  const [selectedTab, setSelectedTab] = useState<string>("");
   return (
     <header className="w-full bg-primary-background h-[10%] flex flex-row justify-between">
-      <h1 className="text-primary-color p-4 font-bold font-lato text-3xl">
+      <h1
+        className="text-primary-color p-4 font-bold font-lato text-3xl"
+        onClick={() => {
+          setSelectedTab("");
+          navigate("/");
+        }}
+      >
         Onion S.A.
       </h1>
       <nav>
         <ul className="flex flex-rox m-4">
           <li
             className={`text-primary-color px-2 cursor-pointer ${
-              abaSelecionada === ID.aba_upload ? "underline font-bold" : null
+              selectedTab === ID.tab_upload ? "underline font-bold" : null
             }`}
             onClick={() => {
-              setAbaSelecionada(ID.aba_upload);
+              setSelectedTab(ID.tab_upload);
               navigate("/home/uploadFiles");
             }}
           >
@@ -25,10 +31,10 @@ export default function HomeHeader() {
           </li>
           <li
             className={`text-primary-color px-2 cursor-pointer ${
-              abaSelecionada === ID.aba_graficos ? "underline font-bold" : null
+              selectedTab === ID.tab_graphics ? "underline font-bold" : null
             }`}
             onClick={() => {
-              setAbaSelecionada(ID.aba_graficos);
+              setSelectedTab(ID.tab_graphics);
               navigate("/home/graphics");
             }}
           >

@@ -3,5 +3,5 @@ export const DARK = "dark";
 export const BASE = "base";
 
 export const LOCALSTORAGE_ROUTES = {
-  idioma: "/idioma",
+  language: "/language",
 };

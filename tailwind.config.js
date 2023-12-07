@@ -59,6 +59,7 @@ module.exports = {
         "secondary-color": "#C0C2C2",
         "primary-button": "#ACF866",
         danger: "#F46D6D",
+        "primary-cards-background": "#e7e7e7",
         "secondary-cards-background": "#101314",
         "secondary-button": "#28292F",
       },
