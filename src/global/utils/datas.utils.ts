@@ -1,4 +1,4 @@
-export function formatarData(data: any, configs?: any) {
+export function dateFormat(data: any, configs?: any) {
   if (!data) {
     return undefined;
   }
@@ -34,4 +34,16 @@ export function formatarData(data: any, configs?: any) {
   return new Intl.DateTimeFormat("pt-BR", options)
     .format(new Date(data))
     .toString();
+}
+
+export function deadlineCalculate(days: number, orderDate: Date) {
+  let today = new Date();
+
+  if (!orderDate) {
+    orderDate = today;
+  }
+
+  let dataFormatada = new Date(orderDate.setDate(orderDate.getDate() + days));
+
+  return dataFormatada;
 }

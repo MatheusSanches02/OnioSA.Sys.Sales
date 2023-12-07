@@ -14,3 +14,17 @@ export async function IncludeOrder(file: FormData) {
     }
   }
 }
+
+export async function GetOrders() {
+  try {
+    let response = await api.get("api/Pedidos/ObterPedidos");
+
+    const data = response.data;
+
+    return data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      toast.error(error.message);
+    }
+  }
+}
