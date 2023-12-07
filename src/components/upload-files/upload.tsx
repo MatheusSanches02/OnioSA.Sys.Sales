@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { GetAll, IncludeFiles } from "../../services/arquivos.services";
+import { GetAll, IncludeOrder } from "../../services/index.services";
 import { toast } from "react-toastify";
 import { IFiles } from "../../global/interface/index.interface";
 import { DownloadButton } from "../download/index.downlod";
@@ -45,9 +45,9 @@ export default function UploadFiles() {
     try {
       if (file) {
         const formData = new FormData();
-        formData.append("criarArquivo", file);
+        formData.append("pedido", file);
 
-        const response = await IncludeFiles(formData);
+        const response = await IncludeOrder(formData);
 
         if (response.sucesso) {
           toast.success(response.mensagem);
@@ -65,7 +65,7 @@ export default function UploadFiles() {
         conseguirá importar uma planilha Excel e ter um controle através de
         gráficos das suas vendas!
       </p>
-      <div className="h-[80%] w-[80%] rounded-md bg-primary-cards-background m-auto mt-5">
+      <div className="h-[75%] w-[80%] rounded-md bg-primary-cards-background m-auto mt-5">
         <div className="flex flex-row justify-between m-2">
           <div className="grid grid-cols-1 gap-2">
             <p className="text-black text-lg font-bold ">
