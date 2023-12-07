@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { GetAll, IncludeFiles } from "../../services/arquivos.services";
 import { toast } from "react-toastify";
 import { IFiles } from "../../global/interface/index.interface";
+import { DownloadButton } from "../download/index.downlod";
 
 export default function UploadFiles() {
   const [file, setFile] = useState<File | null>(null);
@@ -36,7 +37,6 @@ export default function UploadFiles() {
       toast.warning(
         "Por favor, selecione um arquivo Excel válido (xls ou xlsx)."
       );
-      // Limpar o input de arquivo para evitar o upload de arquivos inválidos
       e.target.value = "";
     }
   };
@@ -85,9 +85,7 @@ export default function UploadFiles() {
               </button>
             </div>
           </div>
-          <button className="rounded-lg border-2 border-secondary-button bg-primary-button p-2 m-2">
-            Download Exemplo
-          </button>
+          <DownloadButton />
         </div>
         <div className="w-ful h-px bg-primary-background"></div>
         <div className="h-[70%] overflow-y-auto">
