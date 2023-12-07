@@ -26,7 +26,18 @@ export default function UploadFiles() {
     const selectedFile = e.target.files && e.target.files[0];
 
     if (selectedFile) {
-      setFile(selectedFile);
+      const allowedExtensions = ["xls", "xlsx"];
+      const fileExtension = selectedFile.name.split(".").pop()?.toLowerCase();
+
+      if (fileExtension && allowedExtensions.includes(fileExtension)) {
+        setFile(selectedFile);
+        return toast.success("Arquivo adicionado com sucesso!");
+      }
+      toast.warning(
+        "Por favor, selecione um arquivo Excel válido (xls ou xlsx)."
+      );
+      // Limpar o input de arquivo para evitar o upload de arquivos inválidos
+      e.target.value = "";
     }
   };
 
