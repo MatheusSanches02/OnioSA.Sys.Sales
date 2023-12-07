@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { GetAll, IncludeOrder } from "../../services/index.services";
 import { toast } from "react-toastify";
-import { IFiles } from "../../global/interface/index.interface";
+import { IFiles, IResponse } from "../../global/interface/index.interface";
 import { DownloadButton } from "../download/index.downlod";
 
 export default function UploadFiles() {
@@ -11,10 +11,10 @@ export default function UploadFiles() {
 
   useEffect(() => {
     async function getFiles() {
-      let resp = await GetAll();
+      let resp: IResponse = await GetAll();
 
-      if (resp.sucesso) {
-        setFileList(resp.dados);
+      if (resp?.sucesso) {
+        setFileList(resp?.dados);
         setUpdateList(false);
       }
     }
@@ -47,10 +47,10 @@ export default function UploadFiles() {
         const formData = new FormData();
         formData.append("pedido", file);
 
-        const response = await IncludeOrder(formData);
+        const response: IResponse = await IncludeOrder(formData);
 
-        if (response.sucesso) {
-          toast.success(response.mensagem);
+        if (response?.sucesso) {
+          toast.success(response?.mensagem);
           setUpdateList(true);
         }
       }
