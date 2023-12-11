@@ -87,33 +87,35 @@ export default function GraphicsComponent() {
           <Loading />
         )}
       </div>
-      <div className="h-[90%] rounded-lg m-4 border-2 border-primary-border bg-primary-cards-background">
+      <div className="h-[70%] rounded-lg m-4 border-2 border-primary-border bg-primary-cards-background">
         <p className="text-black text-lg font-bold m-2">Resumo de vendas</p>
         <div className="h-px w-full bg-primary-border"></div>
-        {orders && orders?.length > 0 ? (
-          orders.map((o, i) => (
-            <div
-              className="flex flex-row justify-between rounded-md h-auto bg-sec-background shadow-md m-2 p-2 hover:ring-2 hover:ring-primary-button"
-              key={i}
-            >
-              <div className="flex flex-col text-primary">
-                <p>Nome: {o?.razaoSocial}</p>
-                <p>Produto: {o?.produto}</p>
+        <div className="h-[70%] overflow-y-auto">
+          {orders && orders?.length > 0 ? (
+            orders.map((o, i) => (
+              <div
+                className="flex flex-row justify-between rounded-md h-auto bg-sec-background shadow-md m-2 p-2 hover:ring-2 hover:ring-primary-button"
+                key={i}
+              >
+                <div className="flex flex-col text-primary">
+                  <p>Nome: {o?.razaoSocial}</p>
+                  <p>Produto: {o?.produto}</p>
+                </div>
+                <div className="flex flex-col text-primary">
+                  <p>Valor Final: {o.valorProduto + o.frete}</p>
+                  <p>
+                    Data de Entrega:
+                    {dateFormat(deadlineCalculate(o.prazo, o.data), {
+                      onlyDate: true,
+                    })}
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col text-primary">
-                <p>Valor Final: {o.valorProduto + o.frete}</p>
-                <p>
-                  Data de Entrega:
-                  {dateFormat(deadlineCalculate(o.prazo, o.data), {
-                    onlyDate: true,
-                  })}
-                </p>
-              </div>
-            </div>
-          ))
-        ) : (
-          <NoData />
-        )}
+            ))
+          ) : (
+            <NoData />
+          )}
+        </div>
       </div>
     </div>
   );

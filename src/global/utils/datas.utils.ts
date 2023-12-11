@@ -36,14 +36,21 @@ export function dateFormat(data: any, configs?: any) {
     .toString();
 }
 
-export function deadlineCalculate(days: number, orderDate: Date) {
-  let today = new Date();
-
+export function deadlineCalculate(days: number, orderDate?: Date): Date {
   if (!orderDate) {
-    orderDate = today;
+    orderDate = new Date();
   }
 
-  let dataFormatada = new Date(orderDate.setDate(orderDate.getDate() + days));
+  let newDate = new Date(orderDate);
 
-  return dataFormatada;
+  if (
+    Object.prototype.toString.call(newDate) !== "[object Date]" ||
+    isNaN(newDate.getTime())
+  ) {
+    throw new Error("Invalid date provided");
+  }
+
+  newDate.setUTCDate(newDate.getUTCDate() + days);
+
+  return newDate;
 }
